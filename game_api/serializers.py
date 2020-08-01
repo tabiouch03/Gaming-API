@@ -7,6 +7,7 @@ class GameSerializer(serializers.ModelSerializer):
       fields = '__all__'
       depth = 1
 
+
 class GenreSerializer(serializers.ModelSerializer):
     class Meta:
       model = Genre
