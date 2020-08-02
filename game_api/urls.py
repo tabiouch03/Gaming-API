@@ -5,5 +5,5 @@ urlpatterns = [
     path('game/', game_list),
     path('detail/<int:pk>', game_detail),
     path('news/', news_list),
-    path('news-detail/<int:pk>', news_detail)
+    path('news-detail/<int:pk>', news_detail),
 ]

@@ -4,7 +4,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-# Create your views here.
+##########################
+## ALL METHOD FOR GAMES ##
+##########################
 
 @api_view(['GET', 'POST'])
 def game_list(request):
@@ -43,6 +45,10 @@ def game_detail(request, pk):
   elif request.method == 'DELETE':
     game.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
+
+##########################
+## ALL METHOD FOR NEWS  ##
+##########################
 
 @api_view(['GET', 'POST'])
 def news_list(request):
