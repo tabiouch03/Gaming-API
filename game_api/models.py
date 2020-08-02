@@ -17,6 +17,17 @@ class Game(models.Model):
   def __str__(self):
     return self.title
 
+# News Model
+class News(models.Model):
+  title = models.CharField(max_length=100)
+  resume = models.TextField()
+  image = models.CharField(max_length=255)
+  date = models.DateTimeField(auto_now_add=True)
+
+  def __str__(self):
+    return self.title
+
+
 # Editeur Model
 class Editor(models.Model):
   name = models.CharField(max_length=50)
