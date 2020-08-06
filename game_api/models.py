@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django import forms 
 
 
 # Game Model
@@ -8,14 +9,31 @@ class Game(models.Model):
   editor = models.ForeignKey('Editor', on_delete=models.CASCADE)
   cover = models.CharField(max_length=500)
   resume = models.TextField()
-  average = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(5)])
+  average = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(20)])
   available = models.BooleanField(default=True)
   trailer = models.CharField(max_length=500)
   date = models.DateTimeField(auto_now_add=True)
-  genre = models.ForeignKey('Genre', on_delete=models.CASCADE)
+  genre = models.ManyToManyField('Genre')
+  test_img = models.ManyToManyField('TestImg')
+  # test_img = models.CharField(max_length=255, null=True, blank=True)
+  # test_img1 = models.CharField(max_length=255, null=True, blank=True)
+  # test_img2 = models.CharField(max_length=255, null=True, blank=True)
+  # test_img3 = models.CharField(max_length=255, null=True, blank=True)
+  # test_img4 = models.CharField(max_length=255, null=True, blank=True)
+  description = models.TextField(null=True, blank=True)
+  description1 = models.TextField(null=True, blank=True)
+  description2 = models.TextField(null=True, blank=True)
+  description3 = models.TextField(null=True, blank=True)
 
   def __str__(self):
     return self.title
+
+class TestImg(models.Model):
+  test = models.CharField(max_length=255, null=True, blank=True)
+
+
+  def __str__(self):
+    return self.test
 
 # News Model
 class News(models.Model):
