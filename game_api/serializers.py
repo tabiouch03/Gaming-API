@@ -12,6 +12,10 @@ class GenreSerializer(serializers.ModelSerializer):
     class Meta:
       model = Genre
 
+class PlateformSeriliazer(serializers.ModelSerializer):
+    class Meta:
+      model = Plateform
+
 class NewsSerializer(serializers.ModelSerializer):
     class Meta:
       model = News

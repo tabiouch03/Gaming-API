@@ -1,5 +1,5 @@
-from .models import Game, Genre, News
-from .serializers import GameSerializer, NewsSerializer, GenreSerializer
+from .models import *
+from .serializers import *
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -24,7 +24,7 @@ def gameAPI(request):
 def game_list(request):
 
   if request.method == 'GET':
-    games = Game.objects.all()
+    games = Game.objects.all().order_by('-date')
     serializer = GameSerializer(games, many=True)
     return Response(serializer.data)
 
@@ -66,7 +66,7 @@ def game_detail(request, pk):
 def news_list(request):
 
   if request.method == 'GET':
-    news = News.objects.all()
+    news = News.objects.all().order_by('-date') 
     serializer = NewsSerializer(news, many=True)
     return Response(serializer.data)
 

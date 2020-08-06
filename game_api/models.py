@@ -11,15 +11,15 @@ class Game(models.Model):
   resume = models.TextField()
   average = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(20)])
   available = models.BooleanField(default=True)
-  trailer = models.CharField(max_length=500)
+  trailer = models.CharField(max_length=500, null=True, blank=True)
   date = models.DateTimeField(auto_now_add=True)
-  genre = models.ManyToManyField('Genre')
-  test_img = models.ManyToManyField('TestImg')
-  # test_img = models.CharField(max_length=255, null=True, blank=True)
-  # test_img1 = models.CharField(max_length=255, null=True, blank=True)
-  # test_img2 = models.CharField(max_length=255, null=True, blank=True)
-  # test_img3 = models.CharField(max_length=255, null=True, blank=True)
-  # test_img4 = models.CharField(max_length=255, null=True, blank=True)
+  genre = models.ManyToManyField('Genre', blank=True)
+  plateform = models.ManyToManyField('Plateform', blank=True)
+  test_img = models.CharField(max_length=255, null=True, blank=True)
+  test_img1 = models.CharField(max_length=255, null=True, blank=True)
+  test_img2 = models.CharField(max_length=255, null=True, blank=True)
+  test_img3 = models.CharField(max_length=255, null=True, blank=True)
+  test_img4 = models.CharField(max_length=255, null=True, blank=True)
   description = models.TextField(null=True, blank=True)
   description1 = models.TextField(null=True, blank=True)
   description2 = models.TextField(null=True, blank=True)
@@ -27,13 +27,6 @@ class Game(models.Model):
 
   def __str__(self):
     return self.title
-
-class TestImg(models.Model):
-  test = models.CharField(max_length=255, null=True, blank=True)
-
-
-  def __str__(self):
-    return self.test
 
 # News Model
 class News(models.Model):
@@ -59,3 +52,10 @@ class Genre(models.Model):
 
   def __str__(self):
     return self.name
+
+# Platefrom Model
+class Plateform(models.Model):
+  console = models.CharField(max_length=15)
+
+  def __str__(self):
+    return self.console
