@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import game_list, game_detail, news_list, news_detail, genre_list, gameAPI
+from .views import game_list, game_detail, news_list, news_detail, gameAPI
 
 urlpatterns = [
     path('', gameAPI),
