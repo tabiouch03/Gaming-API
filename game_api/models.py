@@ -6,9 +6,9 @@ from django import forms
 # Game Model
 class Game(models.Model):
   title = models.CharField(max_length=50)
-  editor = models.ForeignKey('Editor', on_delete=models.CASCADE)
+  editor = models.ForeignKey('Editor',null=True, blank=True, on_delete=models.CASCADE)
   cover = models.CharField(max_length=500)
-  resume = models.TextField()
+  resume = models.TextField(blank=True)
   average = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(20)])
   available = models.BooleanField(default=True)
   trailer = models.CharField(max_length=500, null=True, blank=True)
@@ -41,7 +41,7 @@ class News(models.Model):
 
 # Editeur Model
 class Editor(models.Model):
-  name = models.CharField(max_length=50)
+  name = models.CharField(max_length=50,null=True)
 
   def __str__(self):
     return self.name
