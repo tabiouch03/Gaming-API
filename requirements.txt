@@ -1,0 +1,9 @@
+# Installer les dépendances
+# pip install -r requirements.txt
+
+# Django & co
+djangorestframework
+django-cors-headers
+django-allauth
+django-rest-auth
+drf-yasg
